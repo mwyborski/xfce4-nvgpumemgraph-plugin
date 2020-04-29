@@ -21,8 +21,8 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
+#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
 msgstr "Représentation graphique de la charge processeur"
 
 #: ../panel-plugin/cpu.c:162
@@ -35,7 +35,7 @@ msgid "Usage: %u%%"
 msgstr "Utilisation : %u%%"
 
 #: ../panel-plugin/properties.c:132
-msgid "GPU Graph Properties"
+msgid "GPUMEM Graph Properties"
 msgstr "Propriétés du graphique processeur"
 
 #: ../panel-plugin/properties.c:149
@@ -172,6 +172,6 @@ msgstr "Feu"
 msgid "Color mode: "
 msgstr "Mode couleur : "
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
 msgstr "Graphique processeur"

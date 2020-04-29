@@ -18,8 +18,8 @@ msgstr ""
 "Language: hy_AM\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
+#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
 msgstr "ԿՄՍ֊ի բեռնման գծապատկերային ներկայացում"
 
 #: ../panel-plugin/cpu.c:162
@@ -32,8 +32,8 @@ msgid "Usage: %u%%"
 msgstr "Աւգտագործում․ %u%%"
 
 #: ../panel-plugin/properties.c:132
-msgid "GPU Graph Properties"
-msgstr "GPU Graph Յատկութիւններ"
+msgid "GPUMEM Graph Properties"
+msgstr "GPUMEM Graph Յատկութիւններ"
 
 #: ../panel-plugin/properties.c:149
 msgid "Use non-linear time-scale"
@@ -169,6 +169,6 @@ msgstr "Կրակ"
 msgid "Color mode: "
 msgstr "Գոյնի աշխատակերպ․"
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
-msgstr "GPU Graph"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
+msgstr "GPUMEM Graph"

@@ -1,5 +1,5 @@
 /*  cpu.c
- *  Part of xfce4-nvgpugraph-plugin
+ *  Part of xfce4-nvgpumemgraph-plugin
  *
  *  Copyright (c) Alexander Nordfelth <alex.nordfelth@telia.com>
  *  Copyright (c) gatopeich <gatoguan-os@yahoo.com>
@@ -32,48 +32,48 @@
 # define _(String) gettext (String)
 #endif
 
-static void       nvgpugraph_construct   (XfcePanelPlugin    *plugin);
-static NVGPUGraph *create_gui           (XfcePanelPlugin    *plugin);
-static void       create_bars          (NVGPUGraph           *base);
+static void       nvgpumemgraph_construct   (XfcePanelPlugin    *plugin);
+static NVGPUMEMGraph *create_gui           (XfcePanelPlugin    *plugin);
+static void       create_bars          (NVGPUMEMGraph           *base);
 static guint      init_cpu_data        (CpuData           **data);
 static void       shutdown             (XfcePanelPlugin    *plugin,
-                                        NVGPUGraph           *base);
-static void       delete_bars          (NVGPUGraph           *base);
+                                        NVGPUMEMGraph           *base);
+static void       delete_bars          (NVGPUMEMGraph           *base);
 static gboolean   size_cb              (XfcePanelPlugin    *plugin,
                                         guint               size,
-                                        NVGPUGraph           *base);
+                                        NVGPUMEMGraph           *base);
 static void       about_cb             (XfcePanelPlugin    *plugin,
-                                        NVGPUGraph           *base);
-static void       set_bars_size        (NVGPUGraph           *base,
+                                        NVGPUMEMGraph           *base);
+static void       set_bars_size        (NVGPUMEMGraph           *base,
                                         gint                size,
                                         GtkOrientation      orientation);
 static void       mode_cb              (XfcePanelPlugin    *plugin,
                                         XfcePanelPluginMode mode,
-                                        NVGPUGraph           *base);
-static void       set_bars_color       (NVGPUGraph           *base);
-static void       set_bars_orientation (NVGPUGraph           *base,
+                                        NVGPUMEMGraph           *base);
+static void       set_bars_color       (NVGPUMEMGraph           *base);
+static void       set_bars_orientation (NVGPUMEMGraph           *base,
                                         GtkOrientation      orientation);
-static gboolean   update_cb            (NVGPUGraph           *base);
-static void       update_tooltip       (NVGPUGraph           *base);
+static gboolean   update_cb            (NVGPUMEMGraph           *base);
+static void       update_tooltip       (NVGPUMEMGraph           *base);
 static gboolean   tooltip_cb           (GtkWidget          *widget,
                                         gint                x,
                                         gint                y,
                                         gboolean            keyboard,
                                         GtkTooltip         *tooltip,
-                                        NVGPUGraph           *base);
+                                        NVGPUMEMGraph           *base);
 static void       draw_area_cb         (GtkWidget          *w,
                                         cairo_t            *cr,
                                         gpointer            data);
 static gboolean   command_cb           (GtkWidget          *w,
                                         GdkEventButton     *event,
-                                        NVGPUGraph           *base);
+                                        NVGPUMEMGraph           *base);
 
-XFCE_PANEL_PLUGIN_REGISTER (nvgpugraph_construct);
+XFCE_PANEL_PLUGIN_REGISTER (nvgpumemgraph_construct);
 
 static void
-nvgpugraph_construct (XfcePanelPlugin *plugin)
+nvgpumemgraph_construct (XfcePanelPlugin *plugin)
 {
-    NVGPUGraph *base;
+    NVGPUMEMGraph *base;
 
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
@@ -91,12 +91,12 @@ nvgpugraph_construct (XfcePanelPlugin *plugin)
     g_signal_connect (plugin, "mode-changed", G_CALLBACK (mode_cb), base);
 }
 
-static NVGPUGraph *
+static NVGPUMEMGraph *
 create_gui (XfcePanelPlugin *plugin)
 {
     GtkWidget *frame, *ebox;
     GtkOrientation orientation;
-    NVGPUGraph *base = g_new0 (NVGPUGraph, 1);
+    NVGPUMEMGraph *base = g_new0 (NVGPUMEMGraph, 1);
 
     orientation = xfce_panel_plugin_get_orientation (plugin);
     if ((base->nr_cores = init_cpu_data (&base->cpu_data)) == 0)
@@ -144,7 +144,7 @@ create_gui (XfcePanelPlugin *plugin)
 }
 
 static void
-about_cb (XfcePanelPlugin *plugin, NVGPUGraph *base)
+about_cb (XfcePanelPlugin *plugin, NVGPUMEMGraph *base)
 {
     GdkPixbuf *icon;
     const gchar *auth[] = {
@@ -152,14 +152,14 @@ about_cb (XfcePanelPlugin *plugin, NVGPUGraph *base)
         "lidiriel <lidiriel@coriolys.org>","Angelo Miguel Arrifano <miknix@gmail.com>",
         "Florian Rivoal <frivoal@gmail.com>","Peter Tribble <peter.tribble@gmail.com>",
         "Marek Wyborski <marek.wyborski@emwesoft.com>", NULL};
-    icon = xfce_panel_pixbuf_from_source ("xfce4-nvgpugraph-plugin", NULL, 32);
+    icon = xfce_panel_pixbuf_from_source ("xfce4-nvgpumemgraph-plugin", NULL, 32);
     gtk_show_about_dialog (NULL,
         "logo", icon,
         "license", xfce_get_license_text (XFCE_LICENSE_TEXT_GPL),
         "version", PACKAGE_VERSION,
         "program-name", PACKAGE_NAME,
-        "comments", _("Graphical representation of the GPU load"),
-        "website", "https://goodies.xfce.org/projects/panel-plugins/xfce4-nvgpugraph-plugin",
+        "comments", _("Graphical representation of the GPUMEM load"),
+        "website", "https://goodies.xfce.org/projects/panel-plugins/xfce4-nvgpumemgraph-plugin",
         "copyright", _("Copyright (c) 2003-2020\n"),
         "authors", auth, NULL);
 
@@ -168,13 +168,13 @@ about_cb (XfcePanelPlugin *plugin, NVGPUGraph *base)
 }
 
 static guint
-nb_bars (NVGPUGraph *base)
+nb_bars (NVGPUMEMGraph *base)
 {
     return base->tracked_core == 0 ? base->nr_cores : 1;
 }
 
 static void
-create_bars (NVGPUGraph *base)
+create_bars (NVGPUMEMGraph *base)
 {
     guint i;
     guint n;
@@ -208,7 +208,7 @@ init_cpu_data (CpuData **data)
 }
 
 static void
-shutdown (XfcePanelPlugin *plugin, NVGPUGraph *base)
+shutdown (XfcePanelPlugin *plugin, NVGPUMEMGraph *base)
 {
     g_free (base->cpu_data);
     delete_bars (base);
@@ -222,7 +222,7 @@ shutdown (XfcePanelPlugin *plugin, NVGPUGraph *base)
 }
 
 static void
-delete_bars (NVGPUGraph *base)
+delete_bars (NVGPUMEMGraph *base)
 {
     guint i;
     guint n;
@@ -240,7 +240,7 @@ delete_bars (NVGPUGraph *base)
 }
 
 static gboolean
-size_cb (XfcePanelPlugin *plugin, guint size, NVGPUGraph *base)
+size_cb (XfcePanelPlugin *plugin, guint size, NVGPUMEMGraph *base)
 {
     gint frame_h, frame_v, history;
     GtkOrientation orientation;
@@ -275,7 +275,7 @@ size_cb (XfcePanelPlugin *plugin, guint size, NVGPUGraph *base)
 }
 
 static void
-set_bars_size (NVGPUGraph *base, gint size, GtkOrientation orientation)
+set_bars_size (NVGPUMEMGraph *base, gint size, GtkOrientation orientation)
 {
     guint i;
     guint n;
@@ -298,7 +298,7 @@ set_bars_size (NVGPUGraph *base, gint size, GtkOrientation orientation)
 }
 
 static void
-mode_cb (XfcePanelPlugin *plugin, XfcePanelPluginMode mode, NVGPUGraph *base)
+mode_cb (XfcePanelPlugin *plugin, XfcePanelPluginMode mode, NVGPUMEMGraph *base)
 {
     GtkOrientation orientation = (mode == XFCE_PANEL_PLUGIN_MODE_HORIZONTAL) ?
         GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL;
@@ -313,7 +313,7 @@ mode_cb (XfcePanelPlugin *plugin, XfcePanelPluginMode mode, NVGPUGraph *base)
 }
 
 static void
-set_bars_color (NVGPUGraph *base)
+set_bars_color (NVGPUMEMGraph *base)
 {
     gchar *color = gdk_rgba_to_string (&base->colors[4]);
     gchar *css = g_strdup_printf ("progressbar progress { \
@@ -328,7 +328,7 @@ set_bars_color (NVGPUGraph *base)
 }
 
 static void
-set_bars_orientation (NVGPUGraph *base, GtkOrientation orientation)
+set_bars_orientation (NVGPUMEMGraph *base, GtkOrientation orientation)
 {
     guint i, n;
 
@@ -346,7 +346,7 @@ set_bars_orientation (NVGPUGraph *base, GtkOrientation orientation)
 }
 
 static gboolean
-update_cb (NVGPUGraph *base)
+update_cb (NVGPUMEMGraph *base)
 {
     gint i, a, b, factor;
 
@@ -402,15 +402,15 @@ update_cb (NVGPUGraph *base)
 }
 
 static void
-update_tooltip (NVGPUGraph *base)
+update_tooltip (NVGPUMEMGraph *base)
 {
     gchar tooltip[32];
-    g_snprintf (tooltip, 32, g_strconcat("GPU ", _("Usage: %u%%"), NULL), (guint) base->cpu_data[0].load);
+    g_snprintf (tooltip, 32, g_strconcat("GPUMEM ", _("Usage: %u%%"), NULL), (guint) base->cpu_data[0].load);
     gtk_label_set_text (GTK_LABEL (base->tooltip_text), tooltip);
 }
 
 static gboolean
-tooltip_cb (GtkWidget *widget, gint x, gint y, gboolean keyboard, GtkTooltip *tooltip, NVGPUGraph *base)
+tooltip_cb (GtkWidget *widget, gint x, gint y, gboolean keyboard, GtkTooltip *tooltip, NVGPUMEMGraph *base)
 {
     gtk_tooltip_set_custom (tooltip, base->tooltip_text);
     return TRUE;
@@ -419,7 +419,7 @@ tooltip_cb (GtkWidget *widget, gint x, gint y, gboolean keyboard, GtkTooltip *to
 static void
 draw_area_cb (GtkWidget *widget, cairo_t *cr, gpointer data)
 {
-    NVGPUGraph *base = (NVGPUGraph *) data;
+    NVGPUMEMGraph *base = (NVGPUMEMGraph *) data;
     GtkAllocation alloc;
     gint w, h;
 
@@ -449,7 +449,7 @@ draw_area_cb (GtkWidget *widget, cairo_t *cr, gpointer data)
 }
 
 static gboolean
-command_cb (GtkWidget *w, GdkEventButton *event, NVGPUGraph *base)
+command_cb (GtkWidget *w, GdkEventButton *event, NVGPUMEMGraph *base)
 {
     if (event->button == 1 && base->command)
     {
@@ -461,26 +461,26 @@ command_cb (GtkWidget *w, GdkEventButton *event, NVGPUGraph *base)
 }
 
 void
-set_startup_notification (NVGPUGraph *base, gboolean startup_notification)
+set_startup_notification (NVGPUMEMGraph *base, gboolean startup_notification)
 {
     base->startup_notification = startup_notification;
 }
 
 void
-set_in_terminal (NVGPUGraph *base, gboolean in_terminal)
+set_in_terminal (NVGPUMEMGraph *base, gboolean in_terminal)
 {
     base->in_terminal = in_terminal;
 }
 
 void
-set_command (NVGPUGraph *base, const gchar *command)
+set_command (NVGPUMEMGraph *base, const gchar *command)
 {
     g_free (base->command);
     base->command = g_strdup (command);
 }
 
 void
-set_bars (NVGPUGraph *base, gboolean bars)
+set_bars (NVGPUMEMGraph *base, gboolean bars)
 {
     GtkOrientation orientation;
 
@@ -500,7 +500,7 @@ set_bars (NVGPUGraph *base, gboolean bars)
 }
 
 void
-set_border (NVGPUGraph *base, gboolean border)
+set_border (NVGPUMEMGraph *base, gboolean border)
 {
     int border_width = (xfce_panel_plugin_get_size (base->plugin) > 26 ? 2 : 1);
     base->has_border = border;
@@ -510,20 +510,20 @@ set_border (NVGPUGraph *base, gboolean border)
 }
 
 void
-set_frame (NVGPUGraph *base, gboolean frame)
+set_frame (NVGPUMEMGraph *base, gboolean frame)
 {
     base->has_frame = frame;
     gtk_frame_set_shadow_type (GTK_FRAME (base->frame_widget), base->has_frame ? GTK_SHADOW_IN : GTK_SHADOW_NONE);
 }
 
 void
-set_nonlinear_time (NVGPUGraph *base, gboolean nonlinear)
+set_nonlinear_time (NVGPUMEMGraph *base, gboolean nonlinear)
 {
     base->non_linear = nonlinear;
 }
 
 void
-set_update_rate (NVGPUGraph *base, guint rate)
+set_update_rate (NVGPUMEMGraph *base, guint rate)
 {
     guint update;
 
@@ -550,20 +550,20 @@ set_update_rate (NVGPUGraph *base, guint rate)
 }
 
 void
-set_size (NVGPUGraph *base, guint size)
+set_size (NVGPUMEMGraph *base, guint size)
 {
     base->size = size;
     size_cb (base->plugin, xfce_panel_plugin_get_size (base->plugin), base);
 }
 
 void
-set_color_mode (NVGPUGraph *base, guint color_mode)
+set_color_mode (NVGPUMEMGraph *base, guint color_mode)
 {
     base->color_mode = color_mode;
 }
 
 void
-set_mode (NVGPUGraph *base, guint mode)
+set_mode (NVGPUMEMGraph *base, guint mode)
 {
     base->mode = mode;
 
@@ -581,7 +581,7 @@ set_mode (NVGPUGraph *base, guint mode)
 }
 
 void
-set_color (NVGPUGraph *base, guint number, GdkRGBA color)
+set_color (NVGPUMEMGraph *base, guint number, GdkRGBA color)
 {
     guint i, n;
 
@@ -602,7 +602,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 void
-set_tracked_core (NVGPUGraph *base, guint core)
+set_tracked_core (NVGPUMEMGraph *base, guint core)
 {
     gboolean has_bars = base->has_bars;
     if (has_bars)

@@ -1,6 +1,6 @@
-nvidia GPU Graph plugin for the Xfce4 panel.
+nvidia GPUMEM Graph plugin for the Xfce4 panel.
 
-This plugin displays a nvidia gpu load graph. Multiple GPU's are supported. The plugin is based on the CPU Graph plugin.
+This plugin displays a nvidia gpumem load graph. Multiple GPUMEM's are supported. The plugin is based on the CPU Graph plugin.
 
 
 To install on Xubuntu:
@@ -30,7 +30,7 @@ supported languages.
 --------
 How to use
 ----
-Just add it to your xfce pannel, and it should display the GPU usage in an easy
+Just add it to your xfce pannel, and it should display the GPUMEM usage in an easy
 to understand way.
 
 A left click on the plugin will launch xfce4-taskmanager, or if you don't have
@@ -82,14 +82,14 @@ Color 3: None - Normal: This color isn't used.
 
 In the second tab of the properties, the following options are available:
 
-* Update interval: How often the graph is refreshed with new GPU data
+* Update interval: How often the graph is refreshed with new GPUMEM data
 
-* Tracked core: On multi core or multi GPU systems, allows to pick whether GPU
-		Graph should display data representing all cores/GPUs or only a
+* Tracked core: On multi core or multi GPUMEM systems, allows to pick whether GPUMEM
+		Graph should display data representing all cores/GPUMEMs or only a
                 specific one.
 
 * Width / Height: Depending on the orientation of the xfce panel, allows to
-                  change the width or height of the GPU Graph plugin.
+                  change the width or height of the GPUMEM Graph plugin.
 
 * Non-linear time scale: When checked, scrolling will work differently.  Try
                          and see.
@@ -100,8 +100,8 @@ In the second tab of the properties, the following options are available:
                the plugin.
 
 * Show current usage bars: When checked, in addition to the main graph area,
-			   the plugin show one bar per core/GPU, displaying the
-                           current load of that core/GPU.
+			   the plugin show one bar per core/GPUMEM, displaying the
+                           current load of that core/GPUMEM.
 
 * Associated command: Sets the command to run when the plugin is left-clicked.
 

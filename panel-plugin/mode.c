@@ -49,7 +49,7 @@ mix_colors (gdouble ratio, GdkRGBA *color1, GdkRGBA *color2, cairo_t *target)
 }
 
 void
-draw_graph_normal (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
+draw_graph_normal (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h)
 {
     gint x, y;
     gint usage;
@@ -94,7 +94,7 @@ draw_graph_normal (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
 }
 
 void
-draw_graph_LED (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
+draw_graph_LED (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h)
 {
     gint nrx = (w + 1) / 3;
     gint nry = (h + 1) / 2;
@@ -129,7 +129,7 @@ draw_graph_LED (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
 }
 
 void
-draw_graph_no_history (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
+draw_graph_no_history (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h)
 {
     gint y;
     gint usage = h * base->history[0] / CPU_SCALE;
@@ -162,7 +162,7 @@ draw_graph_no_history (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
 }
 
 void
-draw_graph_grid (NVGPUGraph *base, cairo_t *cr, gint w, gint h)
+draw_graph_grid (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h)
 {
     gint x, y;
     gint usage;

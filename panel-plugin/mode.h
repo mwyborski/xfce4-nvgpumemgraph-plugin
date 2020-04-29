@@ -26,9 +26,9 @@
 
 #include "cpu.h"
 
-void draw_graph_normal (NVGPUGraph *base, cairo_t *cr, gint w, gint h);
-void draw_graph_LED (NVGPUGraph *base, cairo_t *cr, gint w, gint h);
-void draw_graph_no_history (NVGPUGraph *base, cairo_t *cr, gint w, gint h);
-void draw_graph_grid (NVGPUGraph *base, cairo_t *cr, gint w, gint h);
+void draw_graph_normal (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h);
+void draw_graph_LED (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h);
+void draw_graph_no_history (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h);
+void draw_graph_grid (NVGPUMEMGraph *base, cairo_t *cr, gint w, gint h);
 
 #endif /* !_XFCE_MODE_H_ */

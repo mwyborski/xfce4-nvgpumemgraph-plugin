@@ -1,17 +1,17 @@
 dnl configure.ac
 dnl
-dnl xfce4-nvgpugraph-plugin - A nvidia gpu load XFce4 panel-plugin.
+dnl xfce4-nvgpumemgraph-plugin - A nvidia gpumem load XFce4 panel-plugin.
 dnl
 dnl 2004 Alexander Nordfelth <alex.nordfelth@telia.com>
 dnl 2019 Marek Wyborski <marek.wyborski@emwesoft.com>
 dnl
 
-m4_define([nvgpugraph_version],[1.1.0])
+m4_define([nvgpumemgraph_version],[1.1.0])
 
-AC_INIT([xfce4-nvgpugraph-plugin], [nvgpugraph_version], [https://bugzilla.xfce.org/])
+AC_INIT([xfce4-nvgpumemgraph-plugin], [nvgpumemgraph_version], [https://bugzilla.xfce.org/])
 AC_USE_SYSTEM_EXTENSIONS()
 
-NVGPUGRAPH_VERSION=nvgpugraph_version()
+NVGPUMEMGRAPH_VERSION=nvgpumemgraph_version()
 AM_INIT_AUTOMAKE([1.11 dist-bzip2 tar-ustar no-dist-gzip])
 AM_CONFIG_HEADER([config.h])
 

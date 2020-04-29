@@ -41,7 +41,7 @@ static void    create_check_box              (GtkBox       *tab,
                                               GtkSizeGroup *sg,
                                               const gchar  *name,
                                               gboolean      init,
-                                              void (callback)(GtkToggleButton *, NVGPUGraph *),
+                                              void (callback)(GtkToggleButton *, NVGPUMEMGraph *),
                                               void         *cb_data);
 static void    create_drop_down              (GtkBox       *tab,
                                               GtkSizeGroup *sg,
@@ -49,77 +49,77 @@ static void    create_drop_down              (GtkBox       *tab,
                                               const gchar **items,
                                               gsize         nb_items,
                                               guint         init,
-                                              void (callback)(GtkComboBox *, NVGPUGraph *),
+                                              void (callback)(GtkComboBox *, NVGPUMEMGraph *),
                                               void         *cb_data);
 
 static void    setup_update_interval_option  (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    setup_tracked_core_option     (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    setup_size_option             (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
                                               XfcePanelPlugin *plugin,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    setup_command_option          (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    setup_color_option            (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
-                                              NVGPUGraph        *base,
+                                              NVGPUMEMGraph        *base,
                                               guint            number,
                                               const gchar     *name,
                                               GCallback        cb);
 static void    setup_mode_option             (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    setup_color_mode_option       (GtkBox          *vbox,
                                               GtkSizeGroup    *sg,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 
 static void    change_in_terminal            (GtkToggleButton *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_startup_notification   (GtkToggleButton *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_command                (GtkEntry        *entry,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_color_0                (GtkColorButton  *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_color_1                (GtkColorButton  *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_color_2                (GtkColorButton  *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_color_3                (GtkColorButton  *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_color_4                (GtkColorButton  *button,
-                                              NVGPUGraph        *base);
-static void    select_active_colors          (NVGPUGraph        *base);
-static void    select_active_barscolors      (NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
+static void    select_active_colors          (NVGPUMEMGraph        *base);
+static void    select_active_barscolors      (NVGPUMEMGraph        *base);
 static void    change_mode                   (GtkComboBox     *om,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_color_mode             (GtkComboBox     *om,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    response_cb                   (GtkWidget       *dlg,
                                               gint             response,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_frame                  (GtkToggleButton *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_border                 (GtkToggleButton *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_bars                   (GtkToggleButton *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_size                   (GtkSpinButton   *sb,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_time_scale             (GtkToggleButton *button,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_update                 (GtkComboBox     *om,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 static void    change_core                   (GtkComboBox     *combo,
-                                              NVGPUGraph        *base);
+                                              NVGPUMEMGraph        *base);
 
 void
-create_options (XfcePanelPlugin *plugin, NVGPUGraph *base)
+create_options (XfcePanelPlugin *plugin, NVGPUMEMGraph *base)
 {
     GtkWidget *dlg, *header, *content;
     GtkBox *vbox, *vbox2;
@@ -129,7 +129,7 @@ create_options (XfcePanelPlugin *plugin, NVGPUGraph *base)
 
     xfce_panel_plugin_block_menu (plugin);
 
-    dlg = xfce_titled_dialog_new_with_buttons (_("GPU Graph Properties"),
+    dlg = xfce_titled_dialog_new_with_buttons (_("GPUMEM Graph Properties"),
                                        GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
                                        GTK_DIALOG_DESTROY_WITH_PARENT,
                                        "_Close",
@@ -214,7 +214,7 @@ create_option_line (GtkBox *tab, GtkSizeGroup *sg, const gchar *name)
 
 static void
 create_check_box (GtkBox *tab, GtkSizeGroup *sg, const gchar *name, gboolean init,
-                  void (callback)(GtkToggleButton *, NVGPUGraph *), void *cb_data)
+                  void (callback)(GtkToggleButton *, NVGPUMEMGraph *), void *cb_data)
 {
     GtkBox *hbox;
     GtkWidget *checkbox;
@@ -231,7 +231,7 @@ create_check_box (GtkBox *tab, GtkSizeGroup *sg, const gchar *name, gboolean ini
 static void
 create_drop_down (GtkBox *tab, GtkSizeGroup *sg, const gchar *name,
                   const gchar **items, gsize nb_items, guint init,
-                  void (callback)(GtkComboBox *, NVGPUGraph *), void * cb_data)
+                  void (callback)(GtkComboBox *, NVGPUMEMGraph *), void * cb_data)
 {
     GtkBox *hbox;
     GtkWidget *combo;
@@ -253,7 +253,7 @@ create_drop_down (GtkBox *tab, GtkSizeGroup *sg, const gchar *name,
 }
 
 static void
-setup_update_interval_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
+setup_update_interval_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base)
 {
     const gchar *items[] = { _("Fastest (~250ms)"),
                              _("Fast (~500ms)"),
@@ -266,7 +266,7 @@ setup_update_interval_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
 }
 
 static void
-setup_tracked_core_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
+setup_tracked_core_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base)
 {
     gsize nb_items = base->nr_cores + 1;
     gchar *items[ nb_items ];
@@ -278,13 +278,13 @@ setup_tracked_core_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
         items[i] = g_strdup_printf ("%u", i);
     }
 
-    create_drop_down (vbox, sg, _("Tracked GPU:"), (const gchar **) items, nb_items, base->tracked_core, change_core, base);
+    create_drop_down (vbox, sg, _("Tracked GPUMEM:"), (const gchar **) items, nb_items, base->tracked_core, change_core, base);
     for (i = 1; i < nb_items; i++)
         g_free (items[i]);
 }
 
 static void
-setup_size_option (GtkBox *vbox, GtkSizeGroup *sg, XfcePanelPlugin *plugin, NVGPUGraph *base)
+setup_size_option (GtkBox *vbox, GtkSizeGroup *sg, XfcePanelPlugin *plugin, NVGPUMEMGraph *base)
 {
     GtkBox *hbox;
     GtkWidget *size;
@@ -302,7 +302,7 @@ setup_size_option (GtkBox *vbox, GtkSizeGroup *sg, XfcePanelPlugin *plugin, NVGP
 }
 
 static void
-setup_command_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
+setup_command_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base)
 {
     GtkBox *hbox;
     GtkWidget *associatecommand;
@@ -317,7 +317,7 @@ setup_command_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
 }
 
 static void
-setup_color_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base,
+setup_color_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base,
                     guint number, const gchar * name, GCallback cb)
 {
     GtkBox *hbox;
@@ -332,7 +332,7 @@ setup_color_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base,
 }
 
 static void
-setup_mode_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
+setup_mode_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base)
 {
     const gchar *items[] = { _("Disabled"),
                              _("Normal"),
@@ -350,7 +350,7 @@ setup_mode_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
 }
 
 static void
-setup_color_mode_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
+setup_color_mode_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base)
 {
     const gchar *items[] = { _("Solid"),
                              _("Gradient"),
@@ -362,25 +362,25 @@ setup_color_mode_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUGraph *base)
 }
 
 static void
-change_in_terminal (GtkToggleButton *button, NVGPUGraph *base)
+change_in_terminal (GtkToggleButton *button, NVGPUMEMGraph *base)
 {
     set_in_terminal (base, gtk_toggle_button_get_active (button));
 }
 
 static void
-change_startup_notification (GtkToggleButton *button, NVGPUGraph *base)
+change_startup_notification (GtkToggleButton *button, NVGPUMEMGraph *base)
 {
     set_startup_notification (base, gtk_toggle_button_get_active (button));
 }
 
 static void
-change_command (GtkEntry *entry, NVGPUGraph *base)
+change_command (GtkEntry *entry, NVGPUMEMGraph *base)
 {
     set_command (base, gtk_entry_get_text (entry));
 }
 
 static void
-change_color (GtkColorButton *button, NVGPUGraph *base, guint number)
+change_color (GtkColorButton *button, NVGPUMEMGraph *base, guint number)
 {
     GdkRGBA color;
     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &color);
@@ -388,38 +388,38 @@ change_color (GtkColorButton *button, NVGPUGraph *base, guint number)
 }
 
 static void
-change_color_1 (GtkColorButton *button, NVGPUGraph *base)
+change_color_1 (GtkColorButton *button, NVGPUMEMGraph *base)
 {
     change_color (button, base, 1);
 }
 
 static void
-change_color_2 (GtkColorButton *button, NVGPUGraph *base)
+change_color_2 (GtkColorButton *button, NVGPUMEMGraph *base)
 {
     change_color (button, base, 2);
 }
 
 static void
-change_color_3 (GtkColorButton *button, NVGPUGraph *base)
+change_color_3 (GtkColorButton *button, NVGPUMEMGraph *base)
 {
     change_color (button, base, 3);
 }
 
 static void
-change_color_0 (GtkColorButton *button, NVGPUGraph *base)
+change_color_0 (GtkColorButton *button, NVGPUMEMGraph *base)
 {
     change_color (button, base, 0);
 }
 
 static void
-change_color_4 (GtkColorButton *button, NVGPUGraph *base)
+change_color_4 (GtkColorButton *button, NVGPUMEMGraph *base)
 {
     base->has_barcolor = TRUE;
     change_color (button, base, 4);
 }
 
 static void
-select_active_colors (NVGPUGraph *base)
+select_active_colors (NVGPUMEMGraph *base)
 {
     if (base->color_mode != 0 || base->mode == 1 || base->mode == 3)
         gtk_widget_set_sensitive (GTK_WIDGET (base->color_buttons[2]), TRUE);
@@ -433,7 +433,7 @@ select_active_colors (NVGPUGraph *base)
 }
 
 static void
-select_active_barscolors (NVGPUGraph *base)
+select_active_barscolors (NVGPUMEMGraph *base)
 {
     if (base->has_bars)
         gtk_widget_set_sensitive (GTK_WIDGET (base->color_buttons[4]), TRUE);
@@ -442,7 +442,7 @@ select_active_barscolors (NVGPUGraph *base)
 }
 
 static void
-change_mode (GtkComboBox *combo, NVGPUGraph *base)
+change_mode (GtkComboBox *combo, NVGPUMEMGraph *base)
 {
     /* 'Disabled' mode was introduced in 1.1.0 as '-1'
      * for this reason we need to decrement the selected value */
@@ -453,14 +453,14 @@ change_mode (GtkComboBox *combo, NVGPUGraph *base)
 }
 
 static void
-change_color_mode (GtkComboBox *combo, NVGPUGraph *base)
+change_color_mode (GtkComboBox *combo, NVGPUMEMGraph *base)
 {
     set_color_mode (base, gtk_combo_box_get_active (combo));
     select_active_colors (base);
 }
 
 static void
-response_cb (GtkWidget *dlg, gint response, NVGPUGraph *base)
+response_cb (GtkWidget *dlg, gint response, NVGPUMEMGraph *base)
 {
     gtk_widget_destroy (dlg);
     xfce_panel_plugin_unblock_menu (base->plugin);
@@ -468,41 +468,41 @@ response_cb (GtkWidget *dlg, gint response, NVGPUGraph *base)
 }
 
 static void
-change_frame (GtkToggleButton *button, NVGPUGraph *base)
+change_frame (GtkToggleButton *button, NVGPUMEMGraph *base)
 {
     set_frame (base, gtk_toggle_button_get_active (button));
 }
 
 static void
-change_border (GtkToggleButton *button, NVGPUGraph *base)
+change_border (GtkToggleButton *button, NVGPUMEMGraph *base)
 {
     set_border (base, gtk_toggle_button_get_active (button));
 }
 
 static void
-change_bars (GtkToggleButton *button, NVGPUGraph *base)
+change_bars (GtkToggleButton *button, NVGPUMEMGraph *base)
 {
     set_bars (base, gtk_toggle_button_get_active (button));
     select_active_barscolors (base);
 }
 
 static void
-change_size (GtkSpinButton *sb, NVGPUGraph *base)
+change_size (GtkSpinButton *sb, NVGPUMEMGraph *base)
 {
     set_size (base, gtk_spin_button_get_value_as_int (sb));
 }
 
-static void change_time_scale (GtkToggleButton *button, NVGPUGraph *base)
+static void change_time_scale (GtkToggleButton *button, NVGPUMEMGraph *base)
 {
     set_nonlinear_time (base, gtk_toggle_button_get_active (button));
 }
 
-static void change_update (GtkComboBox *combo, NVGPUGraph *base)
+static void change_update (GtkComboBox *combo, NVGPUMEMGraph *base)
 {
     set_update_rate (base, gtk_combo_box_get_active (combo));
 }
 
-static void change_core (GtkComboBox *combo, NVGPUGraph *base)
+static void change_core (GtkComboBox *combo, NVGPUMEMGraph *base)
 {
     set_tracked_core (base, gtk_combo_box_get_active (combo));
 }

@@ -17,9 +17,9 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
-msgstr "س پ ئۇ(GPU) يۈكىنى گرافىك شەكلىدە قىلىپ كۆرسىتىدۇ"
+#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
+msgstr "س پ ئۇ(GPUMEM) يۈكىنى گرافىك شەكلىدە قىلىپ كۆرسىتىدۇ"
 
 #: ../panel-plugin/cpu.c:155
 msgid "Copyright (c) 2003-2012\n"
@@ -31,8 +31,8 @@ msgid "Usage: %u%%"
 msgstr "ئىشلىتىلىۋاتقىنى: %u%%"
 
 #: ../panel-plugin/properties.c:80
-msgid "GPU Graph Properties"
-msgstr "س پ ئۇ(GPU) گرافىك خاسلىقىGPU گرافىك خاسلىقى"
+msgid "GPUMEM Graph Properties"
+msgstr "س پ ئۇ(GPUMEM) گرافىك خاسلىقىGPUMEM گرافىك خاسلىقى"
 
 #: ../panel-plugin/properties.c:98
 msgid "Use non-linear time-scale"
@@ -163,6 +163,6 @@ msgstr "ئۇچقۇن"
 msgid "Color mode: "
 msgstr "رەڭگى: "
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
-msgstr "س پ ئۇ(GPU) گرافىكى"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
+msgstr "س پ ئۇ(GPUMEM) گرافىكى"

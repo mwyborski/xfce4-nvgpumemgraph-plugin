@@ -1,5 +1,5 @@
 /*  cpu.h
- *  Part of xfce4-nvgpugraph-plugin
+ *  Part of xfce4-nvgpumemgraph-plugin
  *
  *  Copyright (c) Alexander Nordfelth <alex.nordfelth@telia.com>
  *  Copyright (c) gatopeich <gatoguan-os@yahoo.com>
@@ -68,20 +68,20 @@ typedef struct
     gssize history_size;
     CpuData *cpu_data;
     GtkCssProvider *css_provider;
-} NVGPUGraph;
+} NVGPUMEMGraph;
 
-void set_startup_notification (NVGPUGraph *base, gboolean startup_notification);
-void set_in_terminal (NVGPUGraph *base, gboolean in_terminal);
-void set_command (NVGPUGraph *base, const gchar *command);
-void set_bars (NVGPUGraph * base, gboolean bars);
-void set_border (NVGPUGraph *base, gboolean border);
-void set_frame (NVGPUGraph *base, gboolean frame);
-void set_nonlinear_time (NVGPUGraph *base, gboolean nonlinear);
-void set_update_rate (NVGPUGraph *base, guint rate);
-void set_size (NVGPUGraph *base, guint width);
-void set_color_mode (NVGPUGraph *base, guint color_mode);
-void set_mode (NVGPUGraph *base, guint mode);
-void set_color (NVGPUGraph *base, guint number, GdkRGBA color);
-void set_tracked_core (NVGPUGraph *base, guint core);
+void set_startup_notification (NVGPUMEMGraph *base, gboolean startup_notification);
+void set_in_terminal (NVGPUMEMGraph *base, gboolean in_terminal);
+void set_command (NVGPUMEMGraph *base, const gchar *command);
+void set_bars (NVGPUMEMGraph * base, gboolean bars);
+void set_border (NVGPUMEMGraph *base, gboolean border);
+void set_frame (NVGPUMEMGraph *base, gboolean frame);
+void set_nonlinear_time (NVGPUMEMGraph *base, gboolean nonlinear);
+void set_update_rate (NVGPUMEMGraph *base, guint rate);
+void set_size (NVGPUMEMGraph *base, guint width);
+void set_color_mode (NVGPUMEMGraph *base, guint color_mode);
+void set_mode (NVGPUMEMGraph *base, guint mode);
+void set_color (NVGPUMEMGraph *base, guint number, GdkRGBA color);
+void set_tracked_core (NVGPUMEMGraph *base, guint core);
 
 #endif /* !_XFCE_CPU_H_ */

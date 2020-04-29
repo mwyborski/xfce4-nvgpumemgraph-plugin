@@ -32,9 +32,9 @@
 #include <string.h>
 #include <math.h>
 
-#define NV_SMI "nvidia-smi --query-gpu=utilization.gpu --format=csv"
-#define NV_SMI_QUERY_HEADER "utilization.gpu [%]"
-#define NV_SMI_QUERY_HEADER_LEN 19
+#define NV_SMI "nvidia-smi --query-gpu=memory.total,memory.used --format=csv"
+#define NV_SMI_QUERY_HEADER "memory.total [MiB], memory.used [MiB]"
+#define NV_SMI_QUERY_HEADER_LEN 37
 #define QUERYMAXLEN 256
 
 
@@ -43,7 +43,7 @@ detect_cpu_number ()
 {
     FILE *fp;
     gchar query_string[QUERYMAXLEN];
-    guint gpu_count = 0;
+    guint gpumem_count = 0;
 
     fp = popen(NV_SMI, "r");
     if (fp == NULL)
@@ -55,12 +55,12 @@ detect_cpu_number ()
     {
 
         while (fgets(query_string, sizeof(query_string), fp) != NULL) 
-            gpu_count++;
+            gpumem_count++;
     }
 
     pclose(fp);
 
-    return gpu_count;
+    return gpumem_count;
 }
 
 gboolean
@@ -69,7 +69,8 @@ read_cpu_data (CpuData *data, guint nb_cpu)
     FILE *fp;
     gchar query_string[QUERYMAXLEN];
     guint line = 0;
-    guint utilization;
+    guint mem_total;
+    guint mem_used;
 
     fp = popen(NV_SMI, "r");
     if (fp == NULL)
@@ -85,12 +86,13 @@ read_cpu_data (CpuData *data, guint nb_cpu)
                 (line < nb_cpu))
         {
             
-            if (sscanf (query_string, "%u %%", &utilization) < 1)
+            if (sscanf (query_string, "%u MiB, %u MiB", &mem_total, &mem_used) < 1)
             {
                 pclose(fp);
                 return FALSE;
             }
 
+            guint utilization = roundf((float) mem_used * 100.0f / (float)mem_total);
             data[nb_cpu - line].load = utilization;
             data[0].load += utilization;
             line++;
@@ -104,3 +106,4 @@ read_cpu_data (CpuData *data, guint nb_cpu)
 
     return TRUE;
 }
+

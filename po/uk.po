@@ -19,8 +19,8 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
+#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
 msgstr "Графічне представлення завантаження процесора"
 
 #: ../panel-plugin/cpu.c:162
@@ -33,8 +33,8 @@ msgid "Usage: %u%%"
 msgstr "Використання: %u%%"
 
 #: ../panel-plugin/properties.c:132
-msgid "GPU Graph Properties"
-msgstr "Налаштування GPU Graph"
+msgid "GPUMEM Graph Properties"
+msgstr "Налаштування GPUMEM Graph"
 
 #: ../panel-plugin/properties.c:149
 msgid "Use non-linear time-scale"
@@ -172,6 +172,6 @@ msgstr "Вогняний"
 msgid "Color mode: "
 msgstr "Тип кольору: "
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
 msgstr "Статистика процесора"

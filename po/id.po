@@ -17,9 +17,9 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
-msgstr "Representasi grafik beban kerja GPU"
+#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
+msgstr "Representasi grafik beban kerja GPUMEM"
 
 #: ../panel-plugin/cpu.c:155
 msgid "Copyright (c) 2003-2012\n"
@@ -31,8 +31,8 @@ msgid "Usage: %u%%"
 msgstr "Penggunaan: %u%%"
 
 #: ../panel-plugin/properties.c:80
-msgid "GPU Graph Properties"
-msgstr "Properti Grafik GPU"
+msgid "GPUMEM Graph Properties"
+msgstr "Properti Grafik GPUMEM"
 
 #: ../panel-plugin/properties.c:98
 msgid "Use non-linear time-scale"
@@ -163,6 +163,6 @@ msgstr "Corak Api"
 msgid "Color mode: "
 msgstr "Mode warna: "
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
-msgstr "Grafik GPU"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
+msgstr "Grafik GPUMEM"

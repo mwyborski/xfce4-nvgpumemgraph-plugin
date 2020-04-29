@@ -17,9 +17,9 @@ msgstr ""
 "Language: ur\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
-msgstr "گریفکل نمائندہ برائے GPU لوڈ"
+#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
+msgstr "گریفکل نمائندہ برائے GPUMEM لوڈ"
 
 #: ../panel-plugin/cpu.c:155
 msgid "Copyright (c) 2003-2012\n"
@@ -31,7 +31,7 @@ msgid "Usage: %u%%"
 msgstr ""
 
 #: ../panel-plugin/properties.c:80
-msgid "GPU Graph Properties"
+msgid "GPUMEM Graph Properties"
 msgstr ""
 
 #: ../panel-plugin/properties.c:98
@@ -164,6 +164,6 @@ msgstr "آگ"
 msgid "Color mode: "
 msgstr "رنگ موڈ:"
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
 msgstr "سی پی یو گراف"

@@ -20,9 +20,9 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
-msgstr "Representação gráfica da carga do GPU"
+#: ../panel-plugin/cpu.c:160 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
+msgstr "Representação gráfica da carga do GPUMEM"
 
 #: ../panel-plugin/cpu.c:162
 msgid "Copyright (c) 2003-2019\n"
@@ -34,8 +34,8 @@ msgid "Usage: %u%%"
 msgstr "Utilização: %u%%"
 
 #: ../panel-plugin/properties.c:132
-msgid "GPU Graph Properties"
-msgstr "Propriedades do gráfico do GPU"
+msgid "GPUMEM Graph Properties"
+msgstr "Propriedades do gráfico do GPUMEM"
 
 #: ../panel-plugin/properties.c:149
 msgid "Use non-linear time-scale"
@@ -171,6 +171,6 @@ msgstr "Fogo"
 msgid "Color mode: "
 msgstr "Modo de cor:"
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
-msgstr "Gráfico de GPU"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
+msgstr "Gráfico de GPUMEM"

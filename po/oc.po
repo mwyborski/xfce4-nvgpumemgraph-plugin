@@ -18,8 +18,8 @@ msgstr ""
 "Language: oc\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
+#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
 msgstr "Representacion grafica de la carga processor"
 
 #: ../panel-plugin/cpu.c:155
@@ -32,7 +32,7 @@ msgid "Usage: %u%%"
 msgstr "Utilizacion : %u%%"
 
 #: ../panel-plugin/properties.c:80
-msgid "GPU Graph Properties"
+msgid "GPUMEM Graph Properties"
 msgstr "Proprietats del grafic processor"
 
 #: ../panel-plugin/properties.c:98
@@ -165,6 +165,6 @@ msgstr "Fuòc"
 msgid "Color mode: "
 msgstr "Mòde color : "
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
 msgstr "Grafic processor"

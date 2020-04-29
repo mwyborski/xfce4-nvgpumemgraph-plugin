@@ -26,7 +26,7 @@
 
 #include "cpu.h"
 
-void read_settings (XfcePanelPlugin *plugin, NVGPUGraph *base);
-void write_settings (XfcePanelPlugin *plugin, NVGPUGraph *base);
+void read_settings (XfcePanelPlugin *plugin, NVGPUMEMGraph *base);
+void write_settings (XfcePanelPlugin *plugin, NVGPUMEMGraph *base);
 
 #endif /* !_XFCE_SETTINGS_H_ */

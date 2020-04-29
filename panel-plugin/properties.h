@@ -26,6 +26,6 @@
 
 #include "cpu.h"
 
-void create_options (XfcePanelPlugin *plugin, NVGPUGraph *base);
+void create_options (XfcePanelPlugin *plugin, NVGPUMEMGraph *base);
 
 #endif /* !_XFCE_PROPERTIES_H_ */

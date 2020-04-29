@@ -18,9 +18,9 @@ msgstr ""
 "Language: ast\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpugraph.desktop.in.h:2
-msgid "Graphical representation of the GPU load"
-msgstr "Representación gráfica de la carga de GPU"
+#: ../panel-plugin/cpu.c:153 ../panel-plugin/nvgpumemgraph.desktop.in.h:2
+msgid "Graphical representation of the GPUMEM load"
+msgstr "Representación gráfica de la carga de GPUMEM"
 
 #: ../panel-plugin/cpu.c:155
 msgid "Copyright (c) 2003-2012\n"
@@ -32,8 +32,8 @@ msgid "Usage: %u%%"
 msgstr "Usu: %u%%"
 
 #: ../panel-plugin/properties.c:80
-msgid "GPU Graph Properties"
-msgstr "Propiedaes del gráficu GPU"
+msgid "GPUMEM Graph Properties"
+msgstr "Propiedaes del gráficu GPUMEM"
 
 #: ../panel-plugin/properties.c:98
 msgid "Use non-linear time-scale"
@@ -165,6 +165,6 @@ msgstr "Fueu"
 msgid "Color mode: "
 msgstr "Mou de color:"
 
-#: ../panel-plugin/nvgpugraph.desktop.in.h:1
-msgid "GPU Graph"
-msgstr "Gráfica de GPU"
+#: ../panel-plugin/nvgpumemgraph.desktop.in.h:1
+msgid "GPUMEM Graph"
+msgstr "Gráfica de GPUMEM"
