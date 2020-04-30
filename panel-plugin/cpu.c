@@ -124,7 +124,7 @@ create_gui (XfcePanelPlugin *plugin)
     g_signal_connect_after (base->draw_area, "draw", G_CALLBACK (draw_area_cb), base);
 
     base->has_bars = FALSE;
-    base->has_barcolor = FALSE;
+    base->has_barcolor = TRUE;
     base->bars = NULL;
 
     mode_cb (plugin, orientation, base);

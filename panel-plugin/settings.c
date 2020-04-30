@@ -52,7 +52,7 @@ read_settings (XfcePanelPlugin *plugin, NVGPUMEMGraph *base)
 
     guint rate = 0;
     gboolean nonlinear = FALSE;
-    guint mode = 0;
+    guint mode = -1;
     guint color_mode = 0;
     gboolean frame = FALSE;
     gboolean border = TRUE;
@@ -90,7 +90,7 @@ read_settings (XfcePanelPlugin *plugin, NVGPUMEMGraph *base)
     background.alpha = 0.0;
 
     barscolor.red = 1.0;
-    barscolor.green = 0.73048;
+    barscolor.green = 1.0;
     barscolor.blue = 0.0;
     barscolor.alpha = 1.0;
 
