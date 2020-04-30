@@ -373,6 +373,8 @@ update_cb (NVGPUMEMGraph *base)
         }
     }
 
+    update_tooltip (base);
+
     if (base->mode == -1)
     {
         /* Disabled mode, skip updating history and drawing the graph */
@@ -395,7 +397,6 @@ update_cb (NVGPUMEMGraph *base)
     }
     base->history[0] = base->cpu_data[0].load;
 
-    update_tooltip (base);
     gtk_widget_queue_draw (base->draw_area);
 
     return TRUE;
@@ -404,8 +405,18 @@ update_cb (NVGPUMEMGraph *base)
 static void
 update_tooltip (NVGPUMEMGraph *base)
 {
-    gchar tooltip[32];
-    g_snprintf (tooltip, 32, g_strconcat("GPUMEM ", _("Usage: %u%%"), NULL), (guint) base->cpu_data[0].load);
+    gchar tooltip[255];
+    gint offset = 0;
+    guint i = 0;
+
+    for (i = base->nr_cores; i > 0; i--)
+    {
+        if (offset < 255)
+            offset += g_snprintf (tooltip + offset, 255 - offset, "GPU %d: %5uMiB / %5uMiB%c", 
+                        base->nr_cores - i, (guint) base->cpu_data[i].previous_used, 
+                        (guint) base->cpu_data[i].previous_total, i == 1 ? '\0': '\n');
+    }
+
     gtk_label_set_text (GTK_LABEL (base->tooltip_text), tooltip);
 }
 

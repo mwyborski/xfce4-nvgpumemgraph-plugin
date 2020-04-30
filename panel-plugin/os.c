@@ -92,8 +92,10 @@ read_cpu_data (CpuData *data, guint nb_cpu)
                 return FALSE;
             }
 
-            guint utilization = roundf((float) mem_used * 100.0f / (float)mem_total);
+            guint utilization = roundf((float) mem_used * 100.0f / (float) mem_total);
             data[nb_cpu - line].load = utilization;
+            data[nb_cpu - line].previous_used = mem_used;
+            data[nb_cpu - line].previous_total = mem_total;
             data[0].load += utilization;
             line++;
         }
