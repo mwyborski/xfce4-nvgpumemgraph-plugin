@@ -618,6 +618,8 @@ set_tracked_core (NVGPUMEMGraph *base, guint core)
     gboolean has_bars = base->has_bars;
     if (has_bars)
         set_bars (base, FALSE);
+    if (core > 0)
+        core = base->nr_cores + 1 - core;
     base->tracked_core = core;
     if (has_bars)
         set_bars (base, TRUE);

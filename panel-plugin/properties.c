@@ -275,7 +275,7 @@ setup_tracked_core_option (GtkBox *vbox, GtkSizeGroup *sg, NVGPUMEMGraph *base)
 
     for (i = 1; i < nb_items; i++)
     {
-        items[i] = g_strdup_printf ("%u", i);
+        items[i] = g_strdup_printf ("GPU %u", i - 1);
     }
 
     create_drop_down (vbox, sg, _("Tracked GPUMEM:"), (const gchar **) items, nb_items, base->tracked_core, change_core, base);
