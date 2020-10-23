@@ -11,13 +11,15 @@ To install on Xubuntu:
 1. clone repository
 
 2. install dependencies:
-    sudo apt install xfce4-dev-tools libxfce4ui-2-dev libxfce4panel-2.0-dev
+	
+    	sudo apt install xfce4-dev-tools libxfce4ui-2-dev libxfce4panel-2.0-dev
     
 3. run:
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
-    sudo make install
+	
+    	./autogen.sh
+    	./configure --prefix=/usr
+    	make
+    	sudo make install
     
 4. right-click on the panel and add like any other panel-plugin.
 
