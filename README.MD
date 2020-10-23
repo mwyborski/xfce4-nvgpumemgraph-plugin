@@ -7,7 +7,10 @@ https://github.com/mwyborski/xfce4-nvgpugraph-plugin
 
 ![Image of Plugin](https://www.emwesoft.com/images/gpumemgraph.png)
 
-To install on Xubuntu:
+
+--------
+Install on Xubuntu
+----
 1. clone repository
 
 2. install dependencies:
